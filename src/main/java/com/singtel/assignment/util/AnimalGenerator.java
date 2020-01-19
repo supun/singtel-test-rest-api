@@ -31,20 +31,27 @@ public class AnimalGenerator {
 
 	public static Animal createAnimal(IAnimal iAnimal){
 		Animal animal = new Animal();
+		if(iAnimal instanceof Animal){
+			animal.setMale(((Animal) iAnimal).isMale());
+		}
 		if(iAnimal instanceof Duck){
 			animal.setName("DUCK");
-		} else if(iAnimal instanceof Chicken){
-			animal.setName("CHICKEN");
-		}else if(iAnimal instanceof Chicken && ((Chicken) iAnimal).isMale()){
+		} else if(iAnimal instanceof Chicken && ((Animal) iAnimal).isMale()){
 			animal.setName("ROOSTER");
+		}else if(iAnimal instanceof Chicken){
+			animal.setName("CHICKEN");
+		} else if(iAnimal instanceof Shark){
+			animal.setName("SHARK");
+			animal.setSize(Size.LARGE);
+			animal.setColor(Color.GREY);
+		}else if(iAnimal instanceof ClownFish){
+			animal.setName("CLOWN_FISH");
+			animal.setSize(Size.SMALL);
+			animal.setColor(Color.ORANGE);
 		}else if(iAnimal instanceof Fish){
 			animal.setName("FISH");
 		}else if(iAnimal instanceof Chicken){
 			animal.setName("CHICKEN");
-		}else if(iAnimal instanceof Shark){
-			animal.setName("SHARK");
-		}else if(iAnimal instanceof ClownFish){
-			animal.setName("CLOWN_FISH");
 		}else if(iAnimal instanceof Dolphin){
 			animal.setName("DOLPHIN");
 		}else if(iAnimal instanceof Butterfly){
